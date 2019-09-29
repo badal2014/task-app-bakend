@@ -3,9 +3,9 @@ require('./db/mangoose');
 const userRouter = require('./routes/users')
 const taskRouter = require("./routes/tasks")
 const app = express()
-const port = process.env.PORT || 3000
-
-const jwt = require('jsonwebtoken')
+const port = process.env.PORT
+// const port = process.env.PORT
+// console.log(process)
 
 app.use(express.json())
 app.use(taskRouter)
