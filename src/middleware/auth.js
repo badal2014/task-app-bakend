@@ -9,9 +9,9 @@ const auth = async(req,res,next) => {
         console.log("decoded" , decoded)
         const user = await User.findOne({_id : decoded._id ,'tokens.token' : token})
         console.log("user" , user)
-        if(!user){
-            throw new Error()
-        }
+        // if(!user){
+        //     throw new Error()
+        // }
         req.token = token
         req.user = user
         next()
