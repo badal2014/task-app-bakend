@@ -8,7 +8,6 @@ const {sendWelcomeMail, sendCancelationMail}  = require('../emails/account')
 
 router.post("/users", async (req, res) => {
     const user = new User(req.body);
-
     try {
         await user.save()
         sendWelcomeMail(user.email , user.name)
@@ -20,14 +19,14 @@ router.post("/users", async (req, res) => {
 })
 
 router.get("/users/me",auth , async (req, res) => {
-    res.send(req.user)
-    // try {
-    //     const users = await User.find({})
-    //     res.send(users)
-    // } catch (e) {
-    //     console.log(e)
-    //     res.status(500).send(e)
-    // }
+    // res.send(req.user)
+    try {
+        const users = await User.find({})
+        res.send(req.user)
+    } catch (e) {
+        console.log(e)
+        res.status(500).send(e)
+    }
 })
 
 router.post("/users/login" , async (req , res) => {
