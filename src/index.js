@@ -4,6 +4,10 @@ const userRouter = require('./routes/users')
 const taskRouter = require("./routes/tasks")
 const app = express()
 const port = process.env.PORT
+var cors = require('cors')
+
+
+app.use(cors())
 // const port = process.env.PORT
 // console.log(process)
 
