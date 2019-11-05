@@ -106,7 +106,8 @@ router.delete('/users/me', auth, async (req, res) => {
         // const data = { message }
         res.status(200).send(message)
     } catch (e) {
-        res.status(500).send(e)
+        const message = { error: e , status : 5000}
+        res.status(500).send(message)
     }
 })
 module.exports = router
