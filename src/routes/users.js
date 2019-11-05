@@ -102,10 +102,9 @@ router.delete('/users/me', auth, async (req, res) => {
     try {
         await req.user.remove()
         sendCancelationMail(req.user.email, req.user.name)
-        const resource = { resource: req.user }
-        const message = { error: "", message: "user deleted Succesfully", status: "2000", resource }
-        const data = { message }
-        res.status(200).send(data)
+        const message = { error: "", message: "user deleted Succesfully", status: "2000", resource: req.user }
+        // const data = { message }
+        res.status(200).send(message)
     } catch (e) {
         res.status(500).send(e)
     }
